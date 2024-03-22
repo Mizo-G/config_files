@@ -21,9 +21,9 @@
   col (layer-switch colemak)
 )
 (deflayer colemak
-  grv  1    2    XX   XX   XX   XX   XX   XX   XX   XX   XX   XX XX
-  tab  q    w    f    d    p    j    u    l    y    ;    XX   XX XX    
-  @cs2 a    r    s    t    g    h    n    e    i    o    @rsf ret 
+  grv  @nv1 @nv2 XX   XX   XX   XX   XX   XX   XX   XX   XX   XX XX
+  tab  q    @wc  f    d    p    j    u    l    @yc  ;    XX   XX XX    
+  @cs2 a    r    s    t    g    h    n    e    i    o    @rs2 ret 
   lctl z    x    c    v    b    k    m    @,n  @.p  @/s  rctl 
   XX   lalt lmet           @nav           rctl XX   @qwy 
 )
@@ -49,7 +49,14 @@
   s2  (layer-toggle sym-2)
   n1  (layer-toggle num-1)
 
-  cs2 (tap-next-press esc lsft) ;; caps swap shift, tab for escape, hold for shift.
+  sfl (layer-toggle shifted-left)
+  sfn (tap-next-press esc lsft)
+  cs2 (around @sfn @sfl) ;;caps swap shift, tab for escape, hold for shift.
+
+  
+  sfr (layer-toggle shifted-right)
+  sfnr (tap-hold-next 400 bspc lsft :timeout-button bspc)
+  rs2 (around @sfnr @sfr) ;;caps swap shift, tab for escape, hold for shift.
 
   css (tap-hold-next 400 esc lsft) ;; caps swap shift, tab for escape, hold for shift.
   rsf (tap-hold-next 400 bspc lsft :timeout-button bspc) ;; tab for backspace hold for lshift.
@@ -66,9 +73,10 @@
   nav (tap-hold 200 spc (layer-toggle navigation)) ;; tab for space hold for nav layer.
   sp. #(. spc)
   sp, #(, spc)
+  nv1 #(M-1)
+  nv2 #(M-2)
+  cbs C-bspc
 )
-
-
 
 
 (defalias)
@@ -85,7 +93,7 @@
   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX XX
   XX   XX   !    @    #    \\   j    u    l    y    XX   XX   XX XX    
   @css \_   $    %    ^	    |   h    n    e    i    o    @rsf ret  
-  XX   XX   &    *    ~    XX   k    m    ,    .    /   XX 
+  XX   XX   &    *    ~    XX   k    m    ,    .    /   XX
   XX   XX   XX             @nav           XX   XX   @qwy 
 )
 
@@ -100,9 +108,28 @@
 
 (defalias)
 (deflayer navigation 
-  XX   XX   XX   XX   XX   XX   XX   XX   1    2    XX   XX   XX XX
+  XX   @nv1 @nv2 XX   XX   XX   XX   XX   1    2    XX   XX   XX XX
   XX   XX   lctl lmet XX   XX   XX   XX   pgup pgdn XX   XX   XX XX    
-  @css XX   XX   `    XX   XX   left down up   rght tab  del  ret 
+  @css XX   XX   `    XX   XX   left down up   rght tab  @cbs ret 
   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX 
   XX   XX   lmet           @nav           XX   XX   @qwy 
+)
+
+(defalias)
+(deflayer shifted-left
+  _    _    _    _    _    _    _    _    _    _    _    _    _ _
+  _    _    w    _    _    _    _    _    _    y    _    _    _ _    
+  _    _    _    _    _    _    _    _    _    _    _    del  _ 
+  _    _    _    _    _    _    _    _    <    >    ?    _ 
+  _    _    _           @nav              _    _    _    
+)
+
+
+(defalias)
+(deflayer shifted-right
+  _    _    _    _    _    _    _    _    _    _    _    _    _ _
+  _    _    w    _    _    _    _    _    _    y    _    _    _ _    
+  _    _    _    _    _    _    _    _    _    _    _    _    _ 
+  _    _    _    _    _    _    _    _    <    >    ?    _ 
+  _    _    _           @nav              _    _    _    
 )
