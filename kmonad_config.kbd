@@ -14,12 +14,7 @@
   lctl lmet lalt           spc            ralt rmet rctl
 )
 
-;;qwerty aliases
-(defalias
-  qwy (layer-switch qwerty) 
-  cse (tap-hold-next 500 (around esc (layer-switch qwerty)) lctl) ;; caps swap escape, tab for escape and layer-switch back to default layer, hold for ctl.
-  col (layer-switch colemak)
-)
+
 (deflayer colemak
   grv  @nv1 @nv2 XX   XX   XX   XX   XX   XX   XX   XX   XX   XX XX
   tab  q    @wc  f    d    p    j    u    l    @yc  ;    XX   XX XX    
@@ -27,57 +22,102 @@
   lctl z    x    c    v    b    k    m    @,n  @.p  @/s  rctl 
   XX   lalt lmet           @nav           rctl XX   @qwy 
 )
+
+
+;;not in use
 (deflayer qwerty
   grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
-  @cse a    s    d    f    g    h    j    k    l    ;    '    ret
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret
   lsft z    x    c    v    b    n    m    ,    .    /    rsft
   lctl lalt lmet           spc            ralt rmet @col 
 )
 
-;; todo ->
-;; use top and home row modifiers
-;; modifiers (shift, ctl, escape, return, super, alt) in colemak layer
-;; modifiers to switch to different layers (symbols, numbers, system) in colemak layer
-;; use space bar hold as extra modifier key in colemak layer, maybe as leader key in system layer
-;; double tab behaviour especially for caps key
-
 
 ;;colemake aliases
 (defalias 
+
+  ;; switch to colemak 
+  ;; from qwerty layer
+  col (layer-switch colemak)
+
+  ;; switch to qwerty 
+  ;; from colemak layer
+  qwy (layer-switch qwerty)
+
+  ;; layer toggles for 
+  ;; symbols, numbers and 
+  ;; punctuation
   s1  (layer-toggle sym-1)		
   s2  (layer-toggle sym-2)
   n1  (layer-toggle num-1)
 
+
+  ;; caps lock button is escape
+  ;; when pressed, shift when held.
+  ;; it also enters the shifted-left
+  ;; layer 
   sfl (layer-toggle shifted-left)
   sfn (tap-next-press esc lsft)
   cs2 (around @sfn @sfl) ;;caps swap shift, tab for escape, hold for shift.
 
   
+
+  ;; the ' key is backspace
+  ;; when pressed, shift
+  ;; when held. it also 
+  ;; enters the shifted-right
+  ;; layer
   sfr (layer-toggle shifted-right)
   sfnr (tap-hold-next 400 bspc lsft :timeout-button bspc)
-  rs2 (around @sfnr @sfr) ;;caps swap shift, tab for escape, hold for shift.
+  rs2 (around @sfnr @sfr)
 
-  css (tap-hold-next 400 esc lsft) ;; caps swap shift, tab for escape, hold for shift.
-  rsf (tap-hold-next 400 bspc lsft :timeout-button bspc) ;; tab for backspace hold for lshift.
+  ;; former versions of:
+  ;; @rs2 and @cs2
+  ;; no longer apply
+  css (tap-hold-next 400 esc lsft) 
+  rsf (tap-hold-next 400 bspc lsft :timeout-button bspc) 
 
+  ;; the letters w and c
+  ;; act as ctrl when held
   wc  (tap-hold 250 w lctl) ;; tab for w hold for lctl.
   yc  (tap-hold 200 y lctl) ;; tab for y hold for lctl.
+  
+  ;; the letters f and l 
+  ;; act as meta
+  ;; no longer apply
   fm  (tap-hold 250 f lmet) ;; tab for f hold for lmet.
   lm  (tap-hold 250 l lmet) ;; tab for l hold for lmet.
   
-  ,n  (tap-hold-next 350 , @n1) ;; tab for n hold for number layer.
-  /s  (tap-hold-next 350 / @s2) ;; tab for e hold for symbol layer.
-  .p  (tap-hold-next 350 . @s1) ;; tab for i hold for punctuation layer.
 
-  nav (tap-hold 200 spc (layer-toggle navigation)) ;; tab for space hold for nav layer.
-  sp. #(. spc)
-  sp, #(, spc)
+  ;; the , . / keys 
+  ;; go into layers 
+  ;; when held
+  ,n  (tap-hold-next 350 , @n1) 
+  /s  (tap-hold-next 350 / @s2) 
+  .p  (tap-hold-next 350 . @s1)
+
+
+  ;; spc bar goes into
+  ;; nav layer when held
+  nav (tap-hold 200 spc (layer-toggle navigation)) 
+
+
+  ;; useful macros
   nv1 #(M-1)
   nv2 #(M-2)
+  
+  
+  ;; useful macros.
+  ;; no longer apply
+  sp. #(. spc)
+  sp, #(, spc)
   cbs C-bspc
+  
 )
 
+
+;; -- Moded Layers -- ;;
 
 (defalias)
 (deflayer sym-1
@@ -110,7 +150,7 @@
 (deflayer navigation 
   XX   @nv1 @nv2 XX   XX   XX   XX   XX   1    2    XX   XX   XX XX
   XX   XX   lctl lmet XX   XX   XX   XX   pgup pgdn XX   XX   XX XX    
-  @css XX   XX   `    XX   XX   left down up   rght tab  @cbs ret 
+  @css XX   XX   `    XX   XX   left down up   rght tab  del ret 
   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX 
   XX   XX   lmet           @nav           XX   XX   @qwy 
 )
@@ -133,3 +173,7 @@
   _    _    _    _    _    _    _    _    <    >    ?    _ 
   _    _    _           @nav              _    _    _    
 )
+
+
+
+
