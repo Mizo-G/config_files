@@ -20,7 +20,7 @@
   tab  q    @wc  f    d    p    j    u    l    @yc  ;    XX   XX XX    
   @cs2 a    r    s    t    g    h    n    e    i    o    @rs2 ret 
   lctl z    x    c    v    b    k    m    @,n  @.p  @/s  rctl 
-  XX   lalt lmet           @nav           rctl XX   @qwy 
+  XX   lalt lmet           @nav           rctl XX   XX 
 )
 
 
@@ -80,9 +80,23 @@
 
   ;; the letters w and c
   ;; act as ctrl when held
-  wc  (tap-hold 250 w lctl) ;; tab for w hold for lctl.
-  yc  (tap-hold 200 y lctl) ;; tab for y hold for lctl.
-  
+  wc  (tap-hold 200 w lctl) ;; tab for w hold for lctl.
+  yc  (tap-hold 250 y lctl) ;; tab for y hold for lctl.
+
+  ;; attempt at quality of
+  ;; life improvements to  
+  ;; using the ctrl keys
+  ;; currently don't work
+  rcl (layer-toggle control-right-w)
+  wc2 (around @wc @rcl) 
+  lcl (layer-toggle control-left-y)
+  yc2 (around @yc @lcl)
+  ctt C-t
+  cts C-s
+  ctr C-r
+  cta C-a
+
+    
   ;; the letters f and l 
   ;; act as meta
   ;; no longer apply
@@ -114,7 +128,6 @@
   sp, #(, spc)
   cbs C-bspc
 )
-
 
 ;; -- Moded Layers -- ;;
 
@@ -174,5 +187,24 @@
 )
 
 
+(defalias)
+(deflayer control-right-w
+  _    _    _    _    _    _    _    _    _    _    _    _    _ _
+  _    _    _    _    _    _    _    _    _    _    _    _    _ _    
+  _    a    _    _    _    _    _    _    _    _    _    _    _ 
+  _    _    _    _    _    _    _    _    _    _    _    _ 
+  _    _    _           @nav              _    _    _    
+
+)
+
+(defalias)
+(deflayer control-left-y
+  _    _    _    _    _    _    _    _    _    _    _    _    _ _
+  _    _    _    _    _    _    _    _    _    _    _    _    _ _    
+  _    @cta @ctr @cts @ctt _    _    _    _    _    _    _    _ 
+  _    _    _    _    _    _    _    _    _    _    _    _ 
+  _    _    _           @nav              _    _    _    
+)
 
 
+;; wa wa wa waya yayayayayayayayys ys ys ys ys ys ya swawa 
