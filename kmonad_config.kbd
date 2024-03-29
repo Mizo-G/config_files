@@ -17,8 +17,8 @@
 
 (deflayer colemak
   grv  @nv1 @nv2 XX   XX   XX   XX   XX   XX   XX   XX   XX   XX XX
-  tab  q    @nav f    d    p    j    u    l    y    ;    XX   XX XX    
-  @cs2 a    r    s    t    g    h    n    e    i    o    @rs2 ret 
+  tab  q    w    f    d    p    j    u    l    y    ;    XX   XX XX    
+  @cs2 @nav r    s    t    g    h    n    e    i    o    @rs2 ret 
   lctl z    x    c    v    b    k    m    @,n  @.p  @/s  rctl 
   caps lalt lmet           @wc           ralt   XX   XX 
 )
@@ -117,7 +117,7 @@
 
   ;; spc bar goes into
   ;; nav layer when held
-  nav (tap-hold 200 w (layer-toggle navigation)) 
+  nav (tap-hold 200 a (layer-toggle navigation)) 
 
 
   ;; useful macros
@@ -165,7 +165,7 @@
 (deflayer navigation 
   XX   @nv1 @nv2 XX   XX   XX   XX   XX   1    2    XX   XX   XX XX
   XX   XX   XX   XX   XX   XX   XX   XX   pgup pgdn XX   XX   XX XX    
-  lsft @wa  XX   XX   lctl lmet left down up   rght tab  bspc ret 
+  XX   XX   lsft XX   lctl lmet left down up   rght del  bspc ret 
   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX 
   XX   XX   lmet           _            XX   XX   XX 
 )
@@ -173,8 +173,8 @@
 (defalias)
 (deflayer shifted-left
   _    _    _    _    _    _    _    _    _    _    _    _    _ _
-  _    _    _    _    _    _    _    _    _    y    _    _    _ _    
-  _    _    _    _    _    _    _    _    _    _    _    _    _ 
+  _    _    _    _    _    _    _    _    _    _    _    _    _ _    
+  _    _    _    _    _    _    _    _    _    _    _    del  _ 
   _    _    _    _    _    _    _    _    <    >    ?    _ 
   _    _    _           spc              _    _    _    
 )
@@ -183,8 +183,8 @@
 (defalias)
 (deflayer shifted-right
   _    _    _    _    _    _    _    _    _    _    _    _    _ _
-  _    _    w    _    _    _    _    _    _    y    _    _    _ _    
-  _    _    _    _    _    _    _    _    _    _    _    _    _ 
+  _    _    _    _    _    _    _    _    _    _    _    _    _ _    
+  _    A    _    _    _    _    _    _    _    _    _    _    _ 
   _    _    _    _    _    _    _    _    <    >    ?    _ 
   _    _    _           spc              _    _    _    
 )
@@ -209,5 +209,3 @@
   _    _    _           spc              _    _    _    
 )
 
-
-;; world my name is pewdiepif
