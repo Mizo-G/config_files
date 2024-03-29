@@ -1,6 +1,6 @@
 (defcfg
   ;; For Linux
-  input  (device-file "/dev/input/event4")
+  input  (device-file "/dev/input/event3")
   output (uinput-sink "My KMonad output")
   fallthrough true
   allow-cmd false
@@ -17,10 +17,10 @@
 
 (deflayer colemak
   grv  @nv1 @nv2 XX   XX   XX   XX   XX   XX   XX   XX   XX   XX XX
-  tab  q    @wc  f    d    p    j    u    l    @yc  ;    XX   XX XX    
+  tab  q    @nav f    d    p    j    u    l    y    ;    XX   XX XX    
   @cs2 a    r    s    t    g    h    n    e    i    o    @rs2 ret 
   lctl z    x    c    v    b    k    m    @,n  @.p  @/s  rctl 
-  XX   lalt lmet           @nav           rctl XX   XX 
+  caps lalt lmet           @wc           ralt   XX   XX 
 )
 
 
@@ -80,21 +80,24 @@
 
   ;; the letters w and c
   ;; act as ctrl when held
-  wc  (tap-hold 200 w lctl) ;; tab for w hold for lctl.
-  yc  (tap-hold 250 y lctl) ;; tab for y hold for lctl.
+  wc  (tap-hold 200 spc lctl) ;; tab for w hold for lctl.
+  yc  (tap-hold 200 y lctl) ;; tab for y hold for lctl.
 
   ;; attempt at quality of
   ;; life improvements to  
   ;; using the ctrl keys
   ;; currently don't work
+  ;; the only behaviour
+  ;; required is to always
+  ;; output a even when
+  ;; pressing wa (right control)
+  ;; the yc2 for left control
+  ;; is not necessary 
   rcl (layer-toggle control-right-w)
   wc2 (around @wc @rcl) 
   lcl (layer-toggle control-left-y)
   yc2 (around @yc @lcl)
-  ctt C-t
-  cts C-s
-  ctr C-r
-  cta C-a
+  wa  #(w a)
 
     
   ;; the letters f and l 
@@ -114,7 +117,7 @@
 
   ;; spc bar goes into
   ;; nav layer when held
-  nav (tap-hold 200 spc (layer-toggle navigation)) 
+  nav (tap-hold 200 w (layer-toggle navigation)) 
 
 
   ;; useful macros
@@ -137,7 +140,7 @@
   XX   XX   `    \(  \)    [    j    u    l    y    XX   XX   XX  XX    
   @css '    "    {    }    ]    h    n    e    i    o    @rsf ret 
   XX   XX   XX   [    ]    XX   k    m    ,    .    /    XX 
-  XX   XX   lmet           @nav           XX   XX   @qwy 
+  XX   XX   lmet           spc           XX   XX    XX  
 )
 
 (defalias)
@@ -145,8 +148,8 @@
   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX XX
   XX   XX   !    @    #    \\   j    u    l    y    XX   XX   XX XX    
   @css \_   $    %    ^	    |   h    n    e    i    o    @rsf ret  
-  XX   XX   &    *    ~    XX   k    m    ,    .    /   XX
-  XX   XX   XX             @nav           XX   XX   @qwy 
+  XX   XX   &    *    ~    XX   k    m    ,    .    /    XX
+  XX   XX   XX             spc           XX   XX    XX
 )
 
 (defalias)
@@ -155,25 +158,25 @@
   XX   XX   1    2    3    +    j    u    l    y    XX   XX   XX XX    
   @css 0    4    5    6    =    h    n    e    i    lmet @rsf ret 
   XX   .    7    8    9    -    k    m    ,    .    /   XX 
-  XX   XX   lmet           @nav           XX   XX   @qwy 
+  XX   XX   lmet           spc           XX   XX    XX 
 )
 
 (defalias)
 (deflayer navigation 
   XX   @nv1 @nv2 XX   XX   XX   XX   XX   1    2    XX   XX   XX XX
-  XX   XX   lctl lmet XX   XX   XX   XX   pgup pgdn XX   XX   XX XX    
-  @css XX   XX   `    XX   XX   left down up   rght tab  del ret 
+  XX   XX   XX   XX   XX   XX   XX   XX   pgup pgdn XX   XX   XX XX    
+  lsft @wa  XX   XX   lctl lmet left down up   rght tab  bspc ret 
   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX 
-  XX   XX   lmet           @nav           XX   XX   @qwy 
+  XX   XX   lmet           _            XX   XX   XX 
 )
 
 (defalias)
 (deflayer shifted-left
   _    _    _    _    _    _    _    _    _    _    _    _    _ _
-  _    _    w    _    _    _    _    _    _    y    _    _    _ _    
-  _    _    _    _    _    _    _    _    _    _    _    del  _ 
+  _    _    _    _    _    _    _    _    _    y    _    _    _ _    
+  _    _    _    _    _    _    _    _    _    _    _    _    _ 
   _    _    _    _    _    _    _    _    <    >    ?    _ 
-  _    _    _           @nav              _    _    _    
+  _    _    _           spc              _    _    _    
 )
 
 
@@ -183,7 +186,7 @@
   _    _    w    _    _    _    _    _    _    y    _    _    _ _    
   _    _    _    _    _    _    _    _    _    _    _    _    _ 
   _    _    _    _    _    _    _    _    <    >    ?    _ 
-  _    _    _           @nav              _    _    _    
+  _    _    _           spc              _    _    _    
 )
 
 
@@ -193,7 +196,7 @@
   _    _    _    _    _    _    _    _    _    _    _    _    _ _    
   _    a    _    _    _    _    _    _    _    _    _    _    _ 
   _    _    _    _    _    _    _    _    _    _    _    _ 
-  _    _    _           @nav              _    _    _    
+  _    _    _           spc              _    _    _    
 
 )
 
@@ -201,10 +204,10 @@
 (deflayer control-left-y
   _    _    _    _    _    _    _    _    _    _    _    _    _ _
   _    _    _    _    _    _    _    _    _    _    _    _    _ _    
-  _    @cta @ctr @cts @ctt _    _    _    _    _    _    _    _ 
+  _    _    _    _    _    _    _    _    _    _    _    _    _ 
   _    _    _    _    _    _    _    _    _    _    _    _ 
-  _    _    _           @nav              _    _    _    
+  _    _    _           spc              _    _    _    
 )
 
 
-;; wa wa wa waya yayayayayayayayys ys ys ys ys ys ya swawa 
+;; world my name is pewdiepif
