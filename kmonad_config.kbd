@@ -1,6 +1,6 @@
 (defcfg
   ;; For Linux
-  input  (device-file "/dev/input/event3")
+  input  (device-file "/dev/input/event4")
   output (uinput-sink "My KMonad output")
   fallthrough true
   allow-cmd false
@@ -164,10 +164,10 @@
 (defalias)
 (deflayer navigation 
   XX   @nv1 @nv2 XX   XX   XX   XX   XX   1    2    XX   XX   XX XX
-  XX   XX   XX   XX   XX   XX   XX   XX   pgup pgdn XX   XX   XX XX    
+  XX   XX   XX   XX   XX   XX   XX   home pgup pgdn XX   XX   XX XX    
   XX   XX   lsft XX   lctl lmet left down up   rght del  bspc ret 
   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX 
-  XX   XX   lmet           _            XX   XX   XX 
+  XX   XX   lmet           spc            XX   XX   XX 
 )
 
 (defalias)
