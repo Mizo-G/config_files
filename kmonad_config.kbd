@@ -3,7 +3,7 @@
   input  (device-file "/dev/input/event4")
   output (uinput-sink "My KMonad output")
   fallthrough true
-  allow-cmd false
+  allow-cmd true
 )
 
 (defsrc
@@ -16,7 +16,7 @@
 
 
 (deflayer colemak
-  grv  @nv1 @nv2 XX   XX   XX   XX   XX   XX   XX   XX   XX   XX XX
+  grv  @nv1 @nv2 XX   XX   XX   XX   XX   XX   XX   @pop XX   XX XX
   tab  q    w    f    d    p    j    u    l    y    ;    XX   XX XX    
   @cs2 @nav r    s    t    g    h    n    e    i    o    @rs2 ret 
   lctl z    x    c    v    b    k    m    @,n  @.p  @/s  rctl 
@@ -130,6 +130,11 @@
   sp. #(. spc)
   sp, #(, spc)
   cbs C-bspc
+
+
+  ;; cmds to reset
+  ;; pop-shell
+  pop (cmd-button "gnome-extensions disable pop-shell@system76.com && gnome-extensions enable pop-shell@system76.com")
 )
 
 ;; -- Moded Layers -- ;;
