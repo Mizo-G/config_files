@@ -20,7 +20,7 @@
   tab  q    w    f    d    p    j    u    l    y    ;    XX   XX XX    
   @cs2 @nav r    s    t    g    h    n    e    i    o    @rs2 ret 
   lctl z    x    c    v    b    k    m    @,n  @.p  @/s  rctl 
-  caps lalt lmet           @wc           ralt   XX  XX 
+  lalt lalt lmet           @wc           ralt   XX  XX 
 )
 
 
@@ -170,7 +170,7 @@
 (deflayer navigation 
   XX   @nv1 @nv2 XX   XX   XX   XX   XX   1    2    XX   XX   XX XX
   XX   XX   XX   XX   XX   XX   XX   home pgup pgdn XX   XX   XX XX    
-  XX   XX   lsft lsft lctl lmet left down up   rght del  bspc ret 
+  XX   XX   lsft lalt lctl lmet left down up   rght del  bspc ret 
   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX 
   XX   XX   lmet           spc            XX   XX   XX 
 )
