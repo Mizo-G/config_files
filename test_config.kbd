@@ -1,5 +1,3 @@
-
-
 (defcfg
   ;; For Windows 
   input  (low-level-hook)
@@ -61,7 +59,7 @@
 (deflayer number_left 
   _    _    _    _    _    _    _    _    _    _    _    _    _    _         _    _    _     _    _    _    _
   _    _    1    2    _    _    _    _    _    _    _    _    _    _         _    _    _     _    _    _    _ 
-  _    0    3    4    5    _    rmet rctl rsft lalt _    _    _                              _    _    _    
+  _    0    3    4    5    _    lmet rctl rsft lalt _    _    _                              _    _    _    
   _    _    _    _    _    _    _    _    _    _    _    _         _                         _    _    _    _
   _    _    _              _              _    _    _         _    _    _                    _    _          
 )
@@ -76,11 +74,11 @@
 
 (defalias
 
-  num   (layer-toggle number_left)
-  rnum  (layer-toggle number_right)
+  num   (layer-toggle number_right)
+  rnum  (layer-toggle number_left)
 
-  f     (tab-hold-next-release 200 f num )
-  l     (tab-hold-next-release 200 l rnum)
+  f     (tap-hold-next-release 200 f @num )
+  l     (tap-hold-next-release 200 l @rnum)
 
 )
 
@@ -93,7 +91,7 @@
 (deflayer Symbols_left
   _    _    _    _    _    _    _    _    _    _    _    _    _    _         _    _    _     _    _    _    _
   _    _    !    @    _    _    _    _    _    _    _    _    _    _         _    _    _     _    _    _    _ 
-  _    ~    #    $    %    _   rmet rctl  rsft lalt _    _    _                                _    _    _    
+  _    ~    #    $    %    _   lmet rctl  rsft lalt _    _    _                                _    _    _    
   _    _    _    _    _    _    _    _    _    _    _    _         _                         _    _    _    _
   _    _    _              _              _    _    _         _    _    _                    _    _          
 )
@@ -110,11 +108,11 @@
 
  => #(= >) 
 
- sym   (layer-toggle Symbols_left)
- rsym  (layer-toggle Symbols_right)
+ sym   (layer-toggle Symbols_right)
+ rsym  (layer-toggle Symbols_left)
 
- v     (tab-hold-next-release 200 v sym )
- k     (tab-hold-next-release 200 k rsym)
+ v     (tap-hold-next-release 200 v @sym )
+ k     (tap-hold-next-release 200 k @rsym)
 
 )
 
@@ -127,7 +125,7 @@
 (deflayer Punctuation_left 
   _    _    _    _    _    _    _    _    _    _    _    _    _    _         _    _    _     _    _    _    _
   _    _    [    ]    _    _    _    _    _    _    _    _    _    _         _    _    _     _    _    _    _ 
-  _    \    {    }    '    _    rmet rctl rsft lalt _    _    _                              _    _    _    
+  _    \    {    }    '    _    lmet rctl rsft lalt _    _    _                              _    _    _    
   _    _    _    _    _    _    _    _    _    _    _    _         _                         _    _    _    _
   _    _    _              _              _    _    _         _    _    _                    _    _          
 )
@@ -142,11 +140,11 @@
 
 (defalias
 
- pun   (layer-toggle Punctuation_left )
- rpun  (layer-toggle Punctuation_right)
+ pun   (layer-toggle Punctuation_right)
+ rpun  (layer-toggle Punctuation_left )
 
- w     (tab-hold-next-release 200 f pun )
- y     (tab-hold-next-release 200 l rpun)
+ w     (tap-hold-next-release 200 w @pun )
+ y     (tap-hold-next-release 200 y @rpun)
 
 )
 
@@ -159,24 +157,24 @@
 
 (deflayer control_left 
   _    _    _    _    _    _    _    _    _    _    _    _    _    _         _    _    _     _    _    _    _
-  _    _    @pun @num _    _    _    _    _    _    _    _    _    _         _    _    _     _    _    _    _ 
-  _    @nav lalt lsft _    lmet _    _    _    _    _    _    _                              _    _    _    
+  _    _    @pun @num _    _    _    _    l    y    _    _    _    _         _    _    _     _    _    _    _ 
+  _    @nav lalt lsft _    lmet h    n    e    i    o    _    _                              _    _    _    
   _    _    _    _    @sym _    _    _    _    _    _    _         _                         _    _    _    _
   _    _    _              _              _    _    _         _    _    _                    _    _          
 )
 
 (deflayer control_right
   _    _    _    _    _    _    _    _    _    _      _     _    _    _         _    _    _     _    _    _    _
-  _    _    _    _    _    _    _    _    @rnum @rpun _     _    _    _         _    _    _     _    _    _    _ 
-  _    _    _    _    _    _    rmet _    rsft lalt   @rnav _    _                              _    _    _    
+  _    _    w    f    _    _    _    _    @rnum @rpun _     _    _    _         _    _    _     _    _    _    _ 
+  _    a    r    s    t    g    lmet _    rsft lalt   @rnav _    _                              _    _    _    
   _    _    _    _    _    _   @rsym _    _    _     _      _         _                         _    _    _    _
   _    _    _              _              _    _      _           _    _    _                   _    _          
 )
 
 (defalias
 
- t     (tab-hold-next-release 200 t (around lctl layer-toggle control_left ))
- n     (tab-hold-next-release 200 n (around rctl layer-toggle control_right))
+ t     (tap-hold-next-release 200 t (around lctl (layer-toggle control_left)))
+ n     (tap-hold-next-release 200 n (around rctl (layer-toggle control_right )))
 
 )
 
@@ -189,24 +187,24 @@
 
 (deflayer shift_left 
   _    _    _    _    _    _    _    _    _    _    _    _    _    _         _    _    _     _    _    _    _
-  _    _    @pun @num _    _    _    _    _    _    _    _    _    _         _    _    _     _    _    _    _ 
-  _    @nav lalt _    lctl lmet _    _    _    _    _    _    _                              _    _    _    
+  _    _    @pun @num _    _    _    _    l    y    _    _    _    _         _    _    _     _    _    _    _ 
+  _    @nav lalt _    lctl lmet h    n    e    i    o    _    _                              _    _    _    
   _    _    _    _    @sym _    _    _    _    _    _    _         _                         _    _    _    _
   _    _    _              _              _    _    _         _    _    _                    _    _          
 )
 
 (deflayer shift_right
   _    _    _    _    _    _    _    _    _    _      _     _    _    _         _    _    _     _    _    _    _
-  _    _    _    _    _    _    _    _    @rnum @rpun _     _    _    _         _    _    _     _    _    _    _ 
-  _    _    _    _    _    _    rmet rctl _     lalt  @rnav _    _                              _    _    _    
+  _    _    w    f    _    _    _    _    @rnum @rpun _     _    _    _         _    _    _     _    _    _    _ 
+  _    a    r    s    t    g    lmet rctl _     lalt  @rnav _    _                              _    _    _    
   _    _    _    _    _    _   @rsym _    _    _     _      _         _                         _    _    _    _
   _    _    _              _              _    _     _           _    _    _                    _    _          
 )
 
 (defalias
 
- s     (tab-hold-next-release 200 s (around lsft layer-toggle shift_left ))
- e     (tab-hold-next-release 200 e (around rsft layer-toggle shift_right))
+ s     (tap-hold-next-release 200 s (around lsft (layer-toggle shift_left)))
+ e     (tap-hold-next-release 200 e (around rsft (layer-toggle shift_right)))
 
 )
 
@@ -218,24 +216,24 @@
 
 (deflayer meta_left 
   _    _    _    _    _    _    _    _    _    _    _    _    _    _         _    _    _     _    _    _    _
-  _    _    @pun @num _    _    _    _    _    _    _    _    _    _         _    _    _     _    _    _    _ 
-  _    @nav lalt lsft lctl _    _    _    _    _    _    _    _                              _    _    _    
+  _    _    @pun @num _    _    _    _    l    y    _    _    _    _         _    _    _     _    _    _    _ 
+  _    @nav lalt lsft lctl _    h    n    e    i    o    _    _                              _    _    _    
   _    _    _    _    @sym _    _    _    _    _    _    _         _                         _    _    _    _
   _    _    _              _              _    _    _         _    _    _                    _    _          
 )
 
 (deflayer meta_right
   _    _    _    _    _    _    _    _    _    _      _     _    _    _         _    _    _     _    _    _    _
-  _    _    _    _    _    _    _    _    @rnum @rpun _     _    _    _         _    _    _     _    _    _    _ 
-  _    _    _    _    _    _    _    rctl rsft lalt   @rnav _    _                              _    _    _    
+  _    _    w    f    _    _    _    _    @rnum @rpun _     _    _    _         _    _    _     _    _    _    _ 
+  _    a    r    s    t    g    _    rctl rsft lalt   @rnav _    _                              _    _    _    
   _    _    _    _    _    _   @rsym _    _    _     _      _         _                         _    _    _    _
   _    _    _              _              _    _     _           _    _    _                    _    _          
 )
 
 (defalias
 
- g     (tab-hold-next-release 200 g (around lmet layer-toggle meta_left)) 
- h     (tab-hold-next-release 200 h (around lmet layer-toggle meta_right))
+ g     (tap-hold-next-release 200 g (around lmet (layer-toggle meta_left)))
+ h     (tap-hold-next-release 200 h (around lmet (layer-toggle meta_right)))
 
 )
 
@@ -247,24 +245,24 @@
 
 (deflayer alt_left 
   _    _    _    _    _    _    _    _    _    _    _    _    _    _         _    _    _     _    _    _    _
-  _    _    @pun @num _    _    _    _    _    _    _    _    _    _         _    _    _     _    _    _    _ 
-  _    @nav _    lsft lctl lmet _    _    _    _    _    _    _                              _    _    _    
+  _    _    @pun @num _    _    _    _    l    y    _    _    _    _         _    _    _     _    _    _    _ 
+  _    @nav _    lsft lctl lmet h    n    e    i    o    _    _                              _    _    _    
   _    _    _    _    @sym _    _    _    _    _    _    _         _                         _    _    _    _
   _    _    _              _              _    _    _         _    _    _                    _    _          
 )
 
 (deflayer alt_right
   _    _    _    _    _    _    _    _    _    _      _     _    _    _         _    _    _     _    _    _    _
-  _    _    _    _    _    _    _    _    @rnum @rpun _     _    _    _         _    _    _     _    _    _    _ 
-  _    _    _    _    _    _    rmet rctl rsft  _     @rnav _    _                              _    _    _    
+  _    _    w    f    _    _    _    _    @rnum @rpun _     _    _    _         _    _    _     _    _    _    _ 
+  _    a    r    s    t    g    lmet rctl rsft  _     @rnav _    _                              _    _    _    
   _    _    _    _    _    _   @rsym _    _    _     _      _         _                         _    _    _    _
   _    _    _              _              _    _     _           _    _    _                    _    _          
 )
 
 (defalias
 
- r     (tab-hold-next-release 200 s (around lalt layer-toggle alt_left)) 
- i     (tab-hold-next-release 200 i (around lalt layer-toggle alt_right))
+ r     (tap-hold-next-release 200 r (around lalt (layer-toggle alt_left))) 
+ i     (tap-hold-next-release 200 i (around lalt (layer-toggle alt_right )))
 
 )
 
@@ -278,8 +276,8 @@
 
 (deflayer nav_left 
   _    _    _    _    _    _    _    _    _    _    _    _    _    _         _    _    _     _    _    _    _
-  _    _    @pun @num _    _    _    _    _    _    _    _    _    _         _    _    _     _    _    _    _ 
-  _    _    lalt lsft lctl lmet _    _    _    _    _    _    _                              _    _    _    
+  _    _    @pun @num _    _    _    _    @sdl @sdr _    _    _    _         _    _    _     _    _    _    _ 
+  _    _    lalt lsft lctl lmet left down up   rght del  _    _                              _    _    _    
   _    _    _    _    @sym _    _    _    _    _    _    _         _                         _    _    _    _
   _    _    _              _              _    _    _         _    _    _                    _    _          
 )
@@ -287,18 +285,21 @@
 (deflayer nav_right
   _    _    _    _    _    _    _    _    _    _      _     _    _    _         _    _    _     _    _    _    _
   _    _    _    _    _    _    _    _    @rnum @rpun _     _    _    _         _    _    _     _    _    _    _ 
-  _    _    _    _    _    _    rmet rctl rsft  lalt  _     _    _                              _    _    _    
+  _    _    _    _    _    _    lmet rctl rsft  lalt  _     _    _                              _    _    _    
   _    _    _    _    _    _   @rsym _    _    _     _      _         _                         _    _    _    _
   _    _    _              _              _    _     _           _    _    _                    _    _          
 )
 
 (defalias
 
- nav   (layer-toggle nav_left )
+ nav   (layer-toggle nav_left)
  rnav  (layer-toggle nav_right)
 
- a     (tab-hold-next-release 200 a nav )
- o     (tab-hold-next-release 200 o rnav)
+ a     (tap-hold-next-release 200 a @nav )
+ o     (tap-hold-next-release 200 o @rnav)
+ 
+ sdl   C-M-left
+ sdr   C-M-rght
 
 )
 
