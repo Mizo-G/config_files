@@ -1,0 +1,8 @@
+alias k="kmonad ~/Repos/config_files/test_config.kbd -l debug"
+alias lh="ls -laho"
+alias vim="nvim"
+alias cd="z"
+alias cdd="z -"
+eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"
+source <(fzf --zsh)

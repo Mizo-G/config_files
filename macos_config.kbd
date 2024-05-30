@@ -5,13 +5,13 @@
 )
 
 (defsrc
-  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc        
-  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \          
-  caps a    s    d    f    g    h    j    k    l    ;    '    ret  ret        
-  lsft z    x    c    v    b    n    m    ,    .    /    rsft	      up      
-  fn lctl lalt lmet          spc            rmet ralt          left down right   
+  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps a    s    d    f    g    h    j    k    l    ;    '  ret  ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft up
+  fn   lctl lalt lmet           spc            rmet ralt left down rght
 )
-
 
 ;; ===================================BASE NO MODS============================================
 
@@ -29,6 +29,7 @@
 ;; ===================================BASE============================================
 
 (deflayer base
+  caps  brdn brup lp   mctl bldn blup prev pp   next mute vold volu
   grv  1    2    3    4    5    6    7    8    9    0    -    =  bspc             
   tab  q    @w   @f   d    p    j    u    @l   @y   ;    XX   XX XX                  
   esc  @a   @r   @s   @t   @g   @h   @n   @e   @i   @o   bspc ret ret 	          
@@ -55,6 +56,7 @@
 ;; ============NUMBERS=============
 
 (deflayer number_left 
+  _    _    _    _    _    _    _    _    _    _    _    _    _             
   _    _    _    _    _    _    _    _    _    _    _    _    _    _         
   _    _    1    2    _    _    _    _    _    _    _    _    _    _          
   _    0    3    4    5    _    lmet rctl rsft lalt _    _    _    _         
@@ -63,6 +65,7 @@
 )
 
 (deflayer number_right
+  _    _    _    _    _    _    _    _    _    _    _    _    _             
   _    _    _    _    _    _    _    _    _    _    _    _    _    _         
   _    _    _    _    _    _    _    _    -    +    _    _    _    _          
   _    @nav lalt lsft lctl lmet _    6    7    8    9    _    _    _         
@@ -87,7 +90,8 @@
 ;; ============SYMBOLS=================
 
 (deflayer Symbols_left
-  _    _    _    _    _    _    _    _    _    _    _    _    _    _        
+  _    _    _    _    _    _    _    _    _    _    _    _    _            
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _         
   _    _    !    @    _    _    _    _    _    _    _    _    _    _         
   _    ~    #    $    %    _   lmet rctl  rsft lalt _    _    _    _         
   _    _    _    _    _    _    _    _    _    _    _    _         _        
@@ -95,7 +99,8 @@
 )
 
 (deflayer Symbols_right
-  _    _    _    _    _    _    _    _    _    _    _    _    _    _        
+  _    _    _    _    _    _    _    _    _    _    _    _    _            
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _         
   _    _    _    _    _    _    _    _    @=>  ~    _    _    _    _         
   _    _    lalt lsft lctl lmet _    ^    &    *    ~    _    _    _        
   _    _    _    _    _    _    _    _    _    _    _    _         _        
@@ -121,7 +126,8 @@
 ;; ============PUNCTUATION============
 
 (deflayer Punctuation_left 
-  _    _    _    _    _    _    _    _    _    _    _    _    _    _        
+  _    _    _    _    _    _    _    _    _    _    _    _    _            
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _         
   _    _    [    ]    _    _    _    _    _    _    _    _    _    _         
   _    \    {    }    '    _    lmet rctl rsft lalt _    _    _    _        
   _    _    _    _    _    _    _    _    _    _    _    _         _        
@@ -129,7 +135,8 @@
 )
 
 (deflayer Punctuation_right 
-  _    _    _    _    _    _    _    _    _    _    _    _    _    _        
+  _    _    _    _    _    _    _    _    _    _    _    _    _            
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _         
   _    _    _    _    _    _    _    _   \_    =    _    _    _    _         
   _    _    lalt lsft lctl lmet _    "   \(   \)    |    _    _    _        
   _    _    _    _    _    _    _    _    _    _    _    _         _        
@@ -154,6 +161,7 @@
 ;; ============CONTROL=============
 
 (deflayer control_left 
+  _    _    _    _    _    _    _    _    _    _    _    _    _             
   _    _    _    _    _    _    _    _    _    _    _    _    _    _         
   _    _    @pun @num _    _    _    _    l    y    _    _    _    _         
   _    @nav lalt lsft _    lmet h    n    e    i    o    _    _    _         
@@ -162,7 +170,8 @@
 )
 
 (deflayer control_right
-  _    _    _    _    _    _    _    _    _    _      _     _    _    _      
+  _    _    _    _    _    _    _    _    _    _      _     _    _          
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _         
   _    _    w    f    _    _    _    _    @rnum @rpun _     _    _    _      
   _    a    r    s    t    g    lmet _    rsft lalt   @rnav _    _    _      
   _    _    _    _    v    _   @rsym _    _    _     _      _         _      
@@ -184,7 +193,8 @@
 ;; ============SHIFT=============
 
 (deflayer shift_left 
-  _    _    _    _    _    _    _    _    _    _    _    _    _    _        
+  _    _    _    _    _    _    _    _    _    _    _    _    _            
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _         
   _    _    w    f    _    _    _    _    l    y    _    _    _    _        
   _    a    r    _    t    g    h    n    e    i    o    _    _    _        
   _    _    _    _    v    _    k    _    _    _    _    _         _        
@@ -192,7 +202,8 @@
 )
 
 (deflayer shift_right
-  _    _    _    _    _    _    _    _    _    _      _     _    _    _     
+  _    _    _    _    _    _    _    _    _    _      _     _    _         
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _         
   _    _    w    f    _    _    _    _    @rnum @rpun _     _    _    _      
   _    a    r    s    t    g    h    n    _    i      o     _    _    _     
   _    _    _    _    v    _    k    _    _    _     _      _         _     
@@ -215,6 +226,7 @@
 ;; ============META=============
 
 (deflayer meta_left 
+  _    _    _    _    _    _    _    _    _    _    _    _    _             
   _    _    _    _    _    _    _    _    _    _    _    _    _    _         
   _    _    @pun @num _    _    _    _    l    y    _    _    _    _         
   _    @nav lalt lsft lctl _    h    n    e    i    o    _    _    _         
@@ -223,7 +235,8 @@
 )
 
 (deflayer meta_right
-  _    _    _    _    _    _    _    _    _    _      _     _    _    _      
+  _    _    _    _    _    _    _    _    _    _      _     _    _          
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _         
   _    _    w    f    _    _    _    _    @rnum @rpun _     _    _    _       
   _    a    r    s    t    g    _    rctl rsft lalt   @rnav _    _    _      
   _    _    _    _    v    _   @rsym _    _    _     _      _         _      
@@ -244,6 +257,7 @@
 ;; ============ALT=============
 
 (deflayer alt_left 
+  _    _    _    _    _    _    _    _    _    _    _    _    _             
   _    _    _    _    _    _    _    _    _    _    _    _    _    _         
   _    _    @pun @num _    _    _    _    l    y    _    _    _    _         
   _    @nav _    lsft lctl lmet h    n    e    i    o    _    _    _         
@@ -252,7 +266,8 @@
 )
 
 (deflayer alt_right
-  _    _    _    _    _    _    _    _    _    _      _     _    _    _      
+  _    _    _    _    _    _    _    _    _    _      _     _    _          
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _         
   _    _    w    f    _    _    _    _    @rnum @rpun _     _    _    _       
   _    a    r    s    t    g    lmet rctl rsft  _     @rnav _    _    _      
   _    _    _    _    v    _   @rsym _    _    _     _      _         _      
@@ -275,6 +290,7 @@
 ;; ============NAV=============
 
 (deflayer nav_left 
+  _    _    _    _    _    _    _    _    _    _    _    _    _             
   _    _    _    _    _    _    _    _    _    _    _    _    _    _         
   _    _    @pun @num _    _    _    _    @sdl @sdr _    _    _    _         
   _    _    lalt lsft lctl lmet left down up   rght del  _    _    _         
@@ -283,7 +299,8 @@
 )
 
 (deflayer nav_right
-  _    _    _    _    _    _    _    _    _    _      _     _    _    _      
+  _    _    _    _    _    _    _    _    _    _      _     _    _         
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _         
   _    _    _    _    _    _    _    _    @rnum @rpun _     _    _    _       
   _    _    _    _    _    _    lmet rctl rsft  lalt  _     _    _    _      
   _    _    _    _    _    _   @rsym _    _    _     _      _         _      
