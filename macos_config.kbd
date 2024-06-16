@@ -1,0 +1,328 @@
+(defcfg
+  ;; For MacOS
+  input  (iokit-name)
+  output (kext)
+)
+
+(defsrc
+  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps a    s    d    f    g    h    j    k    l    ;    '  ret  ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft up
+  fn   lctl lalt lmet           spc            rmet ralt left down rght
+)
+
+;; ===================================BASE NO MODS============================================
+
+;; (deflayer base
+;; grv  1    2    3    4    5    6    7    8    9    0    -    =  bspc             ins  home pgup  nlck kp/  kp*  kp-
+;; tab  q    w    f    d    p    j    u    l    y    ;    [    ]  \                del  end  pgdn  kp7  kp8  kp9  kp+    
+;; esc  a    r    s    t    g    h    n    e    i    o    bspc ret    	                           kp4  kp5  kp6
+;; lsft z    x    c    v    b    k    m    ,    .    /    lsft 	          up                       kp1  kp2  kp3  kprt
+;; lctl lalt lmet           spc            lalt XX  XX              left down rght                 kp0  kp.           
+;; )
+
+;; ==================================================================================
+
+
+;; ===================================BASE============================================
+
+(deflayer base
+  caps  brdn brup lp   mctl bldn blup prev pp   next mute vold volu
+  grv  1    2    3    4    5    6    7    8    9    0    -    =  bspc             
+  tab  q    @w   @f   d    p    j    u    @l   @y   ;    XX   XX XX                  
+  esc  @a   @r   @s   @t   @g   @h   @n   @e   @i   @o   bspc ret ret 	          
+  lsft z    x    c    @v   b    @k   m    ,    .    /    lsft 	         up       
+  fn lctl lalt lmet          spc            rmet ralt          left down right    
+)
+
+;; ==================================================================================
+
+;; (deflayer empty
+;; _    _    _    _    _    _    _    _    _    _    _    _    _    _      _    _    _     _    _    _    _
+;; _    _    _    _    _    _    _    _    _    _    _    _    _    _      _    _    _     _    _    _    _
+;; _    _    _    _    _    _    _    _    _    _    _    _    _   		                	   _    _    _    
+;; _    _    _    _    _    _    _    _    _    _    _    _           _       		         _    _    _    _ 
+;; _    _    _              _              _    _    _           _    _    _		           _    _          
+;; )
+
+;; ==================================================================================
+
+
+;; MODS BEGIN ===================================================================
+
+;; ==================================================================================
+;; ============NUMBERS=============
+
+(deflayer number_left 
+  _    _    _    _    _    _    _    _    _    _    _    _    _             
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _         
+  _    _    1    2    _    _    _    _    _    _    _    _    _    _          
+  _    0    3    4    5    _    lmet rctl rsft lalt _    _    _    _         
+  _    _    _    _    _    _    _    _    _    _    _    _         _         
+  _    _    _    _         _              _    _             _    _    _    
+)
+
+(deflayer number_right
+  _    _    _    _    _    _    _    _    _    _    _    _    _             
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _         
+  _    _    _    _    _    _    _    _    -    +    _    _    _    _          
+  _    @nav lalt lsft lctl lmet _    6    7    8    9    _    _    _         
+  _    _    _    _    _    _    _    _    _    _    _    _         _         
+  _    _    _    _         _              _    _             _    _    _    
+)
+
+(defalias
+
+  num   (layer-toggle number_right)
+  rnum  (layer-toggle number_left)
+
+  f     (tap-hold-next-release 180 f @num )
+  l     (tap-hold-next-release 180 l @rnum)
+
+)
+
+;; ============END NUMBERS=============
+;; ===========================================================================
+
+;; ===========================================================================
+;; ============SYMBOLS=================
+
+(deflayer Symbols_left
+  _    _    _    _    _    _    _    _    _    _    _    _    _            
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _         
+  _    _    !    @    _    _    _    _    _    _    _    _    _    _         
+  _    ~    #    $    %    _   lmet rctl  rsft lalt _    _    _    _         
+  _    _    _    _    _    _    _    _    _    _    _    _         _        
+  _    _    _    _         _              _    _             _    _    _   
+)
+
+(deflayer Symbols_right
+  _    _    _    _    _    _    _    _    _    _    _    _    _            
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _         
+  _    _    _    _    _    _    _    _    @=>  ~    _    _    _    _         
+  _    _    lalt lsft lctl lmet _    ^    &    *    ~    _    _    _        
+  _    _    _    _    _    _    _    _    _    _    _    _         _        
+  _    _    _    _         _              _    _             _    _    _   
+)
+
+(defalias
+
+ => #(= >) 
+
+ sym   (layer-toggle Symbols_right)
+ rsym  (layer-toggle Symbols_left)
+
+ v     (tap-hold-next-release 180 v @sym )
+ k     (tap-hold-next-release 180 k @rsym)
+
+)
+
+;; ============END SYMBOLS============
+;; ===========================================================================
+
+;; ===========================================================================
+;; ============PUNCTUATION============
+
+(deflayer Punctuation_left 
+  _    _    _    _    _    _    _    _    _    _    _    _    _            
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _         
+  _    _    [    ]    _    _    _    _    _    _    _    _    _    _         
+  _    \    {    }    '    _    lmet rctl rsft lalt _    _    _    _        
+  _    _    _    _    _    _    _    _    _    _    _    _         _        
+  _    _    _    _         _              _    _             _    _    _   
+)
+
+(deflayer Punctuation_right 
+  _    _    _    _    _    _    _    _    _    _    _    _    _            
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _         
+  _    _    _    _    _    _    _    _   \_    =    _    _    _    _         
+  _    _    lalt lsft lctl lmet _    "   \(   \)    |    _    _    _        
+  _    _    _    _    _    _    _    _    _    _    _    _         _        
+  _    _    _    _         _              _    _             _    _    _   
+)
+
+(defalias
+
+ pun   (layer-toggle Punctuation_right)
+ rpun  (layer-toggle Punctuation_left )
+
+ w     (tap-hold-next-release 180 w @pun )
+ y     (tap-hold-next-release 180 y @rpun)
+
+)
+
+
+;; ============END PUNCTUATION========
+;; ===========================================================================
+
+;; ===========================================================================
+;; ============CONTROL=============
+
+(deflayer control_left 
+  _    _    _    _    _    _    _    _    _    _    _    _    _             
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _         
+  _    _    @pun @num _    _    _    _    l    y    _    _    _    _         
+  _    @nav lalt lsft _    lmet h    n    e    i    o    _    _    _         
+  _    _    _    _    @sym _    k    _    _    _    _    _         _         
+  _    _    _    _         _              _    _             _    _    _    
+)
+
+(deflayer control_right
+  _    _    _    _    _    _    _    _    _    _      _     _    _          
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _         
+  _    _    w    f    _    _    _    _    @rnum @rpun _     _    _    _      
+  _    a    r    s    t    g    lmet _    rsft lalt   @rnav _    _    _      
+  _    _    _    _    v    _   @rsym _    _    _     _      _         _      
+  _    _    _    _         _              _    _                 _    _    _
+)
+
+(defalias
+
+ t     (tap-hold-next-release 180 t (around lctl (layer-toggle control_left)))
+ n     (tap-hold-next-release 180 n (around rctl (layer-toggle control_right )))
+
+)
+
+
+;; ============END CONTROL=============
+;; ===========================================================================
+
+;; ===========================================================================
+;; ============SHIFT=============
+
+(deflayer shift_left 
+  _    _    _    _    _    _    _    _    _    _    _    _    _            
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _         
+  _    _    w    f    _    _    _    _    l    y    _    _    _    _        
+  _    a    r    _    t    g    h    n    e    i    o    _    _    _        
+  _    _    _    _    v    _    k    _    _    _    _    _         _        
+  _    _    _    _         _              _    _             _    _    _   
+)
+
+(deflayer shift_right
+  _    _    _    _    _    _    _    _    _    _      _     _    _         
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _         
+  _    _    w    f    _    _    _    _    @rnum @rpun _     _    _    _      
+  _    a    r    s    t    g    h    n    _    i      o     _    _    _     
+  _    _    _    _    v    _    k    _    _    _     _      _         _     
+  _    _    _    _         _              _    _                _    _    _
+)
+
+(defalias
+
+ s     (tap-hold-next-release 160 s (around lsft (layer-toggle shift_left)))
+ e     (tap-hold-next-release 160 e (around rsft (layer-toggle shift_right)))
+
+ ;;spc_sft (tap-hold-next-release 100 spc lsft)
+
+)
+
+;; ============END SHIFT=============
+;; ===========================================================================
+
+;; ===========================================================================
+;; ============META=============
+
+(deflayer meta_left 
+  _    _    _    _    _    _    _    _    _    _    _    _    _             
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _         
+  _    _    @pun @num _    _    _    _    l    y    _    _    _    _         
+  _    @nav lalt lsft lctl _    h    n    e    i    o    _    _    _         
+  _    _    _    _    @sym _    k    _    _    _    _    _         _         
+  _    _    _    _         _              _    _             _    _    _    
+)
+
+(deflayer meta_right
+  _    _    _    _    _    _    _    _    _    _      _     _    _          
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _         
+  _    _    w    f    _    _    _    _    @rnum @rpun _     _    _    _       
+  _    a    r    s    t    g    _    rctl rsft lalt   @rnav _    _    _      
+  _    _    _    _    v    _   @rsym _    _    _     _      _         _      
+  _    _    _    _         _              _    _                _    _    _ 
+)
+
+(defalias
+
+ g     (tap-hold-next-release 180 g (around lmet (layer-toggle meta_left)))
+ h     (tap-hold-next-release 180 h (around lmet (layer-toggle meta_right)))
+
+)
+
+;; ============END META=============
+;; ===========================================================================
+
+;; ===========================================================================
+;; ============ALT=============
+
+(deflayer alt_left 
+  _    _    _    _    _    _    _    _    _    _    _    _    _             
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _         
+  _    _    @pun @num _    _    _    _    l    y    _    _    _    _         
+  _    @nav _    lsft lctl lmet h    n    e    i    o    _    _    _         
+  _    _    _    _    @sym _    k    _    _    _    _    _         _         
+  _    _    _    _         _              _    _             _    _    _    
+)
+
+(deflayer alt_right
+  _    _    _    _    _    _    _    _    _    _      _     _    _          
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _         
+  _    _    w    f    _    _    _    _    @rnum @rpun _     _    _    _       
+  _    a    r    s    t    g    lmet rctl rsft  _     @rnav _    _    _      
+  _    _    _    _    v    _   @rsym _    _    _     _      _         _      
+  _    _    _    _         _              _    _                _    _    _ 
+)
+
+(defalias
+
+ r     (tap-hold-next-release 180 r (around lalt (layer-toggle alt_left))) 
+ i     (tap-hold-next-release 180 i (around lalt (layer-toggle alt_right )))
+
+)
+
+
+;; ============END ALT=============
+;; ===========================================================================
+
+
+;; ===========================================================================
+;; ============NAV=============
+
+(deflayer nav_left 
+  _    _    _    _    _    _    _    _    _    _    _    _    _             
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _         
+  _    _    @pun @num _    _    _    _    @sdl @sdr _    _    _    _         
+  _    _    lalt lsft lctl lmet left down up   rght del  _    _    _         
+  _    _    _    _    @sym _    _    _    _    _    _    _         _         
+  _    _    _    _         _              _    _             _    _    _    
+)
+
+(deflayer nav_right
+  _    _    _    _    _    _    _    _    _    _      _     _    _         
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _         
+  _    _    _    _    _    _    _    _    @rnum @rpun _     _    _    _       
+  _    _    _    _    _    _    lmet rctl rsft  lalt  _     _    _    _      
+  _    _    _    _    _    _   @rsym _    _    _     _      _         _      
+  _    _    _    _         _              _    _                _    _    _ 
+)
+
+(defalias
+
+ nav   (layer-toggle nav_left)
+ rnav  (layer-toggle nav_right)
+
+ a     (tap-hold-next-release 180 a @nav )
+ o     (tap-hold-next-release 180 o @rnav)
+ 
+ sdl   C-M-left
+ sdr   C-M-rght
+
+)
+
+;; ============END NAV=============
+;; ===========================================================================
+
+
+
+;; MODS END   ===================================================================
