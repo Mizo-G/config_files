@@ -2,7 +2,7 @@
   ;; For Windows 
   input  (low-level-hook)
   output (send-event-sink)
-  fallthrough true
+  fallthrough false
   allow-cmd false
 )
 
@@ -31,7 +31,7 @@
 ;; ===================================BASE============================================
 
 (deflayer base
-  caps 1    2    3    4    5    6    7    8    9    0    -    =  XX               ins  home pgup  nlck kp/  kp*  kp-
+  grv  1    2    3    4    5    6    7    8    9    0    -    =  XX               ins  home pgup  nlck kp/  kp*  kp-
   tab  q    @w   @f   d    p    j    u    @l   @y   ;    XX   XX XX               del  end  pgdn  kp7  kp8  kp9  kp+    
   esc  @a   @r   @s   @t   @g   @h   @n   @e   @i   @o   bspc ret    	                          kp4  kp5  kp6
   lsft z    x    c    @v   b    @k   m    ,    .    /    lsft 	         up                       kp1  kp2  kp3  kprt

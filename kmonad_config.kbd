@@ -1,38 +1,46 @@
 (defcfg
-  ;; For Linux
-  input  (device-file "/dev/input/event4")
-  output (uinput-sink "My KMonad output")
-  fallthrough true
-  allow-cmd true
+  ;; For Windows 
+  input  (low-level-hook)
+  output (send-event-sink)
+  fallthrough false
+  allow-cmd false
 )
 
 (defsrc
   grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
   caps a    s    d    f    g    h    j    k    l    ;    '    ret
-  lsft z    x    c    v    b    n    m    ,    .    /    rsft
-  lctl lmet lalt           spc            ralt rmet rctl
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft	     up
+  lctl lmet lalt           spc            lalt rmet rctl       left down right 
 )
 
 
 (deflayer colemak
-  grv  @nv1 @nv2 XX   XX   XX   XX   XX   XX   XX   @pop XX   XX XX
+  grv  1    2    3    4    5    6    7    8    9    0    XX   XX XX
   tab  q    w    f    d    p    j    u    l    y    ;    XX   XX XX    
-  @cs2 @nav r    s    t    g    h    n    e    i    o    @rs2 ret 
-  lctl z    x    c    v    b    k    m    @,n  @.p  @/s  rctl 
-  lalt lalt lmet           @wc           ralt   XX  XX 
+  @cs2 @nav r    s    t    g    h    n    e    i    o    @rs2 ret          
+  lalt z    x    c    v    b    k    m    @,n  @.p  @/s  lalt 		   up
+  lctl lalt lmet           spc           lalt   XX  XX              left down rght 
 )
 
 
 ;;not in use
 (deflayer qwerty
-  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
-  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  grv  1    2    3    4    5    6    7    8    9    0    -    =   bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]   \
   caps a    s    d    f    g    h    j    k    l    ;    '    ret
-  lsft z    x    c    v    b    n    m    ,    .    /    rsft
-  lctl lalt lmet           spc            ralt rmet @col 
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft          up        
+  lctl lmet lalt           spc            lalt rmet @col          left down rght 
 )
 
+;; arrow keys no numpad
+;; (deflayer empty
+;; _    _    _    _    _    _    _    _    _    _    _    _    _    _
+;; _    _    _    _    _    _    _    _    _    _    _    _    _    _
+;; _    _    _    _    _    _    _    _    _    _    _    _    _
+;; _    _    _    _    _    _    _    _    _    _    _    _         _        
+;; _    _    _              _              _    _    _         _    _    _ 
+;; )
 
 ;;colemake aliases
 (defalias 
@@ -80,7 +88,7 @@
 
   ;; the letters w and c
   ;; act as ctrl when held
-  wc  (tap-hold 200 spc lctl) ;; tab for w hold for lctl.
+  sct  (tap-hold 200 spc lctl) ;; tab for w hold for lctl.
   yc  (tap-hold 200 y lctl) ;; tab for y hold for lctl.
 
   ;; attempt at quality of
@@ -94,7 +102,7 @@
   ;; the yc2 for left control
   ;; is not necessary 
   rcl (layer-toggle control-right-w)
-  wc2 (around @wc @rcl) 
+  wc2 (around @sct @rcl) 
   lcl (layer-toggle control-left-y)
   yc2 (around @yc @lcl)
   wa  #(w a)
@@ -144,8 +152,8 @@
   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX  XX
   XX   XX   `    \(  \)    [    j    u    l    y    XX   XX   XX  XX    
   @css '    "    {    }    ]    h    n    e    i    o    @rsf ret 
-  XX   XX   XX   [    ]    XX   k    m    ,    .    /    XX 
-  XX   XX   lmet           spc           XX   XX    XX  
+  XX   XX   XX   [    ]    XX   k    m    ,    .    /    XX     _
+  XX   XX   lmet           spc           XX   XX    XX  _    _    _ 
 )
 
 (defalias)
@@ -153,8 +161,8 @@
   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX XX
   XX   XX   !    @    #    \\   j    u    l    y    XX   XX   XX XX    
   @css \_   $    %    ^	    |   h    n    e    i    o    @rsf ret  
-  XX   XX   &    *    ~    XX   k    m    ,    .    /    XX
-  XX   XX   XX             spc           XX   XX    XX
+  XX   XX   &    *    ~    XX   k    m    ,    .    /    XX    _
+  XX   XX   XX             spc           XX   XX    XX  _    _    _ 
 )
 
 (defalias)
@@ -162,8 +170,8 @@
   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX XX
   XX   XX   1    2    3    +    j    u    l    y    XX   XX   XX XX    
   @css 0    4    5    6    =    h    n    e    i    lmet @rsf ret 
-  XX   .    7    8    9    -    k    m    ,    .    /   XX 
-  XX   XX   lmet           spc           XX   XX    XX 
+  XX   .    7    8    9    -    k    m    ,    .    /   XX     _
+  XX   XX   lmet           spc           XX   XX    XX _    _    _ 
 )
 
 (defalias)
@@ -171,8 +179,8 @@
   XX   @nv1 @nv2 XX   XX   XX   XX   XX   1    2    XX   XX   XX XX
   XX   XX   XX   XX   XX   XX   XX   home pgup pgdn XX   XX   XX XX    
   XX   XX   lsft lalt lctl lmet left down up   rght del  bspc ret 
-  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX 
-  XX   XX   lmet           spc            XX   XX   XX 
+  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX     _
+  XX   XX   lmet           spc            XX   XX   XX _    _    _ 
 )
 
 (defalias)
@@ -180,18 +188,18 @@
   _    _    _    _    _    _    _    _    _    _    _    _    _ _
   _    _    _    _    _    _    _    _    _    _    _    _    _ _    
   bspc _    _    _    _    _    _    _    _    _    _    del  _ 
-  _    _    _    _    _    _    _    _    <    >    ?    _ 
-  _    _    _           spc              _    _    _    
-)
+  _    _    _    _    _    _    _    _    <    >    ?    _     _
+  _    _    _           spc              _    _    _    _    _    _ 
+) 
 
 
 (defalias)
-(deflayer shifted-right
+(deflayer shifted-right 
   _    _    _    _    _    _    _    _    _    _    _    _    _ _
   _    _    _    _    _    _    _    _    _    _    _    _    _ _    
   caps A    _    _    _    _    _    _    _    _    _    _    _ 
-  _    _    _    _    _    _    _    _    <    >    ?    _ 
-  _    _    _           spc              _    _    _    
+  _    _    _    _    _    _    _    _    <    >    ?    _      _
+  _    _    _           spc              _    _    _    _    _    _ 
 )
 
 
@@ -200,8 +208,8 @@
   _    _    _    _    _    _    _    _    _    _    _    _    _ _
   _    _    _    _    _    _    _    _    _    _    _    _    _ _    
   _    a    _    _    _    _    _    _    _    _    _    _    _ 
-  _    _    _    _    _    _    _    _    _    _    _    _ 
-  _    _    _           spc              _    _    _    
+  _    _    _    _    _    _    _    _    _    _    _    _     _
+  _    _    _           spc              _    _    _     _    _    _ 
 
 )
 
@@ -210,7 +218,7 @@
   _    _    _    _    _    _    _    _    _    _    _    _    _ _
   _    _    _    _    _    _    _    _    _    _    _    _    _ _    
   _    _    _    _    _    _    _    _    _    _    _    _    _ 
-  _    _    _    _    _    _    _    _    _    _    _    _ 
-  _    _    _           spc              _    _    _    
+  _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _           spc              _    _    _    _    _    _ 
 )
 
